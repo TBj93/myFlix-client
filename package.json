@@ -11,9 +11,13 @@
     "react-dom": "^18.2.0",
     "scheduler": "^0.23.0"
   },
-  "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
-  },
+
+  "alias": {
+		"process": {
+			"global": "{}"
+		}
+	},
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,5 +30,10 @@
   "bugs": {
     "url": "https://github.com/TBj93/myFlix-client/issues"
   },
-  "homepage": "https://github.com/TBj93/myFlix-client#readme"
+  "homepage": "https://github.com/TBj93/myFlix-client#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.2",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10"
+  }
 }
