@@ -13,6 +13,19 @@ export class MainView extends React.Component {
     }
   }
 
+  omponentDidMount(){
+    axios.get('https://tims-movie-api.herokuapp.com/movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+
   setSelectedMovie(newSelectedMovie) {
     this.setState({
       selectedMovie: newSelectedMovie
@@ -24,7 +37,7 @@ export class MainView extends React.Component {
   
     
   
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
       <div className="main-view">
