@@ -1,4 +1,7 @@
-
+.movie-card {
+  width: "18rem";
+  background-color: #0ff;
+}
 
 .my-flix {
   color: #4682b4;
