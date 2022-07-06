@@ -59,7 +59,7 @@ onLoggedIn(user) {
     if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
-      <Container>
+      <Container fluid>
       <div className="main-view">
         {selectedMovie
         ? (
