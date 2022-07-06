@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
-
+import Navbar from 'react-bootstrap/Navbar'
 
 export class MainView extends React.Component {
 
@@ -48,6 +48,8 @@ onLoggedIn(user) {
 }
 
   render() {
+
+    
     const { movies, selectedMovie, user } = this.state;
   
    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
@@ -59,7 +61,21 @@ onLoggedIn(user) {
     if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
+
       <Container fluid>
+      
+           <Navbar bg="primary" expand="lg">
+            <Container>
+               <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
+                 <Navbar.Toggle />
+                    <Navbar.Collapse className="justify-content-end">
+                   <Navbar.Text>
+                       Signed in as: <a href="#login">CustomUser</a>
+                 </Navbar.Text>
+                </Navbar.Collapse>
+             </Container>
+              </Navbar>
+
       <div className="main-view">
         {selectedMovie
         ? (
