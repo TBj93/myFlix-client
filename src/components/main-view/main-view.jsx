@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -17,6 +16,7 @@ export class MainView extends React.Component {
     super();
     this.state = {
       movies: [ ],
+      directors: [],
       selectedMovie: null,
       user: null
     }
@@ -27,6 +27,15 @@ export class MainView extends React.Component {
       .then(response => {
         this.setState({
           movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      axios.get('https://tims-movie-api.herokuapp.com/director')
+      .then(response => {
+        this.setState({
+          directors: response.data
         });
       })
       .catch(error => {
@@ -60,50 +69,29 @@ onLoggedIn(user) {
      <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
    </Col>
  </Row>
-   //registration view
-   // return <RegistrationView />;
     
   
     if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
-
-      <Container fluid>
-      
-           <Navbar bg="primary" expand="lg">
-            <Container>
-               <Navbar.Brand href="#home">MyFlix</Navbar.Brand>
-                 <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
-                   <Navbar.Text>
-                       Signed in as: <a href="#login">CustomUser</a>
-                 </Navbar.Text>
-                </Navbar.Collapse>
-             </Container>
-              </Navbar>
-
-      <div className="main-view">
-        {selectedMovie
-        ? (
-          <Row className="justify-content-md-center">
-            <Col md={8}>
-         <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
-         </Col>
-         </Row>
-        )
-          :( 
-          <Row className="justify-content-md-center">
-          { movies.map(movie => (
-            <Col md={3}>
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+      <Router>
+        <Row className="main-view justify-content-md-center">
+          <Route exact path="/" render={() => {
+            return movies.map(m => (
+              <Col md={3} key={m._id}>
+                <MovieCard movie={m} />
+              </Col>
+            ))
+          }} />
+          <Route path="/movies/:movieId" render={({ match, history }) => {
+            return <Col md={8}>
+              <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
             </Col>
-            ))}
-          </Row>
-          )
-  }
-      </div>
-      </Container>
-      );
+          }} />
+
+        </Row>
+      </Router>
+    );
 }
 }
 

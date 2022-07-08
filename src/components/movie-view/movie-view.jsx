@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem,  useHistory } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import './movie-view.scss'
+import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
     render() {
         const { movie, onBackClick } = this.props;
@@ -10,6 +11,7 @@ export class MovieView extends React.Component {
         return (
            <Container>
        
+     
 
           <div className="movie-view">
             <div className="movie-poster">
@@ -24,10 +26,20 @@ export class MovieView extends React.Component {
               <span className="value">{movie.Description}</span>
 
               <Form>
-          <Button variant="primary" type="submit" onClick={() => { onBackClick(null); }}>
-           Back
-          </Button>
-        </Form>
+                 
+              <Link to={`/director/${movie.Director.Name}`}>
+                  <Button variant="link">Director</Button>
+                      </Link>
+
+                    <Link to={`/genre/${movie.Genre.Name}`}>
+                         <Button variant="link">Genre</Button>
+                          </Link>
+
+                   <br></br>
+              <Button variant="primary" type="submit"  onClick={() => { onBackClick();  }}>
+                             Back
+                  </Button>
+                   </Form>
         
             </div>
       

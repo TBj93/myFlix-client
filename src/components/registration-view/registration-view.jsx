@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
   export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
@@ -14,8 +17,6 @@ import PropTypes from 'prop-types';
       /* then call props.onLoggedIn(username) */
  
     };
-
-
 
 
   return (

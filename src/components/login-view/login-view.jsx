@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { RegistrationView } from '../registration-view/registration-view';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-
+import { Link } from "react-router-dom";
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -18,6 +20,18 @@ export function LoginView(props) {
 
 
   return (
+    <Router>
+     
+     <Route exact path="/register" render={() => {
+            return  (
+         
+                <RegistrationView />
+            
+            )}
+          } />
+
+
+
 
 <Container>
 <Navbar bg="primary" expand="lg">
@@ -27,7 +41,7 @@ export function LoginView(props) {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link"  type="submit" /*onClick={handleReg} */>Register</Nav.Link>
+        <Nav.Link href="register"  type="submit">Register</Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
           <NavDropdown.Divider />
@@ -63,6 +77,7 @@ export function LoginView(props) {
 </Form>
 
     </Container>
+    </Router>
   );
 }
 LoginView.propTypes = {
