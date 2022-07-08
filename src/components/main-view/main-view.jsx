@@ -55,7 +55,11 @@ onLoggedIn(user) {
     const { movies, selectedMovie, user } = this.state;
   
    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-   if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+   if (!user) return <Row>
+   <Col>
+     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+   </Col>
+ </Row>
    //registration view
    // return <RegistrationView />;
     

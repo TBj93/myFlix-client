@@ -15,6 +15,8 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
+
+
   return (
 
 <Container>
@@ -25,7 +27,7 @@ export function LoginView(props) {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Register</Nav.Link>
+        <Nav.Link href="#link"  type="submit" /*onClick={handleReg} */>Register</Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
           <NavDropdown.Divider />
