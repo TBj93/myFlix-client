@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
 import Navbar from 'react-bootstrap/Navbar'
+import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
 export class MainView extends React.Component {
 
@@ -58,6 +59,7 @@ onLoggedIn(user) {
   
    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
    if (!user) return <Row>
+
    <Col>
      <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
    </Col>
@@ -67,17 +69,36 @@ onLoggedIn(user) {
     if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
+      <Container fluid>
+<Navbar bg="primary" expand="lg">
       <Container>
+        <Navbar.Brand href="#home">Welcome to MyFlix</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.2">Info</NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
+
       <Router>
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
            return movies.map(m => (
-              <Col  rmd={3} key={m._id}>
+              <Col  md={3} key={m._id}>
                 <MovieCard movie={m} />
               </Col>
             ))
           }} />
-          
+             </Row>
     
  <Row className="justify-content-md-center">
           <Route path="/movies/:movieId" render={({ match, history }) => {
@@ -123,7 +144,7 @@ onLoggedIn(user) {
           />
             
           
-        </Row>
+    
       </Router>
             </Container>
     );
