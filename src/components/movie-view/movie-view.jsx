@@ -72,6 +72,8 @@ export class MovieView extends React.Component {
                   <br></br>
                   <br></br>
 
+             
+
                   <Link to={`/genres/${movie.genre.name}`}>
               <Button variant="primary" >
                      Learn more about  {movie.genre.name}

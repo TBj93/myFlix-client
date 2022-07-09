@@ -126,7 +126,10 @@ onLoggedIn(user) {
             )}
           />
 
-<Route
+
+          
+
+             <Route
             path="/genres/:genreName"
             render={({ match, history }) => (
               <GenreView
@@ -137,7 +140,7 @@ onLoggedIn(user) {
                 }
                 genreMovies={movies.filter(
                   (m) => m.genre.name === match.params.genreName
-                )}
+                ) }
                 onBackClick={() => history.goBack()}
               />
             )}
