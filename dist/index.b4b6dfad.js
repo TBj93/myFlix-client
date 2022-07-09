@@ -27057,12 +27057,12 @@ class MainView extends (0, _reactDefault.default).Component {
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
-                        path: "/directors/:directorid",
+                        path: "/directors/:directorId",
                         render: ({ match , history  })=>{
                             return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                 md: 8,
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _directorView.DirectorView), {
-                                    movie: directors.find((d)=>d._id === match.params.directorid),
+                                    director: directors.find((d)=>d._id === match.params.directorid),
                                     onBackClick: ()=>history.goBack()
                                 }, void 0, false, void 0, void 0)
                             }, void 0, false, void 0, void 0);
@@ -34924,7 +34924,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
                                 children: [
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Link), {
-                                        to: `/directors/:directorid`,
+                                        to: `/directors/directorid`,
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
                                             variant: "link",
                                             children: "Director"
@@ -34945,17 +34945,17 @@ class MovieView extends (0, _reactDefault.default).Component {
                                             children: "all Director"
                                         }, void 0, false, {
                                             fileName: "src/components/movie-view/movie-view.jsx",
-                                            lineNumber: 43,
+                                            lineNumber: 45,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 42,
+                                        lineNumber: 44,
                                         columnNumber: 23
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 48,
+                                        lineNumber: 50,
                                         columnNumber: 20
                                     }, this),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -34967,7 +34967,7 @@ class MovieView extends (0, _reactDefault.default).Component {
                                         children: "Back"
                                     }, void 0, false, {
                                         fileName: "src/components/movie-view/movie-view.jsx",
-                                        lineNumber: 49,
+                                        lineNumber: 51,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -42973,7 +42973,7 @@ class DirectorView extends (0, _reactDefault.default).Component {
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "director-name",
+                    className: "director-birth",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             className: "label",
@@ -42998,7 +42998,7 @@ class DirectorView extends (0, _reactDefault.default).Component {
                     columnNumber: 13
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                    className: "director-name",
+                    className: "director-id",
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             className: "label",

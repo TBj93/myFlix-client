@@ -18,11 +18,11 @@ export class DirectorView extends React.Component {
               <span className="label">Description:  </span>
               <span className="value">{director.Bio}</span>
             </div>
-            <div className="director-name">
+            <div className="director-birth">
               <span className="label">Birth:  </span>
               <span className="value">{director.Birth}</span>
             </div>
-            <div className="director-name">
+            <div className="director-id">
               <span className="label">ID:  </span>
               <span className="value">{director.directorid}</span>
             </div>

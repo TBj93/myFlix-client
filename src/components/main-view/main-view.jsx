@@ -90,10 +90,10 @@ onLoggedIn(user) {
           }} />
                   
                     <Route
-            path="/directors/:directorid"
+            path="/directors/:directorId"
             render={({ match, history }) => {
               return <Col md={8}>
-                <DirectorView movie={directors.find(d => d._id === match.params.directorid)} onBackClick={() => history.goBack()}/>
+                <DirectorView director={directors.find(d => d._id === match.params.directorid)} onBackClick={() => history.goBack()}/>
               </Col>
             }} />
               

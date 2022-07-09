@@ -36,9 +36,11 @@ export class MovieView extends React.Component {
 
               <Form>
                  
-              <Link to={`/directors/:directorid`}>
+              <Link to={`/directors/directorid`}>
                   <Button variant="link">Director</Button>
                       </Link>
+
+
                       <Link to={`/directors`}>
                   <Button variant="link">all Director</Button>
                       </Link>
