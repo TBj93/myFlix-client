@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem,  useHistory } from 'react-bootstrap';
+import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem,  history } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import './movie-view.scss'
 import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
     render() {
-        const { movie, director, onBackClick } = this.props;
+        const { director, movie, onBackClick } = this.props;
     
 
 
@@ -36,7 +36,7 @@ export class MovieView extends React.Component {
 
               <Form>
                  
-              <Link to={`/directors/${movie.Director}`}>
+              <Link to={`/directors/:directorid`}>
                   <Button variant="link">Director</Button>
                       </Link>
                       <Link to={`/directors`}>

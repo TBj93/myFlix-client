@@ -29,15 +29,16 @@ export class MainView extends React.Component {
       axios.get("https://tims-movie-api.herokuapp.com/director")
   ])
   .then(response => {
-   movies = response[0].data
-     directors = response[1].data
+    this.setState({
+     movies : response[0].data,
+      directors : response[1].data
+    });
+  
 })
-
       .catch(error => {
         console.log(error);
       });
 
-  
   }
 
 /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
@@ -73,10 +74,11 @@ onLoggedIn(user) {
               </Col>
             ))
           }} />
-          <Route exact path="/directors" render={() => {
-           return directors.map(m => (
-              <Col  rmd={3} key={m._id}>
-                <DirectorView director={m} />
+          
+          <Route exact path="/directors" render={({ history }) => {
+           return directors.map(d => (
+              <Col  rmd={3} key={d._id}>
+                <DirectorView director={d} onBackClick={() => history.goBack()}/>
               </Col>
             ))
           }} />
@@ -89,16 +91,14 @@ onLoggedIn(user) {
                   
                     <Route
             path="/directors/:directorid"
-            render={({ match, history }) => (
-              <DirectorView
-                director={
-                  directors.find(
-                    (d) => d.directorid === match.params.directorid
-                  )
-                  }
-              />
-            )}
-          />
+            render={({ match, history }) => {
+              return <Col md={8}>
+                <DirectorView movie={directors.find(d => d._id === match.params.directorid)} onBackClick={() => history.goBack()}/>
+              </Col>
+            }} />
+              
+            
+          
         </Row>
       </Router>
     );
