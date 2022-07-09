@@ -20,15 +20,7 @@ export function LoginView(props) {
 
 
   return (
-    <Router>
-     
-     <Route exact path="/register" render={() => {
-            return  (
-         
-                <RegistrationView />
-            
-            )}
-          } />
+   
 
 
 
@@ -77,7 +69,7 @@ export function LoginView(props) {
 </Form>
 
     </Container>
-    </Router>
+    
   );
 }
 LoginView.propTypes = {

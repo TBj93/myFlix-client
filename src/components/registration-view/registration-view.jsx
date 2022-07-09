@@ -3,19 +3,29 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-
+import axios from 'axios';
   export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
-    const [ email, setEnail ] = useState('');
+    const [ email, setEmail ] = useState('');
     const [ birthday, setBirthday ] = useState('');
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(username, password, email, birthday);
-   
-      /* then call props.onLoggedIn(username) */
- 
+      axios.post('https://tims-movie-api.herokuapp.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      })
+      .catch(e => {
+        console.log('error registering the user')
+      });
     };
 
 
@@ -44,7 +54,7 @@ import Container from 'react-bootstrap/Container';
     
     
     <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
         <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
         <Form.Text className="text-muted">
@@ -54,7 +64,7 @@ import Container from 'react-bootstrap/Container';
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Email" />
+        <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -67,6 +77,15 @@ import Container from 'react-bootstrap/Container';
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicBirthday">
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="Birthday" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
       <Button variant="primary" type="submit" onClick={handleSubmit}>
         Submit
       </Button>

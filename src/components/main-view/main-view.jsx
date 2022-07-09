@@ -58,12 +58,7 @@ onLoggedIn(user) {
     const { movies, directors, selectedMovie, user } = this.state;
   
    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-   if (!user) return <Row>
 
-   <Col>
-     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-   </Col>
- </Row>
     
   
     if (movies.length === 0) return <div className="main-view"></div>;
@@ -91,14 +86,23 @@ onLoggedIn(user) {
 
       <Router>
         <Row className="main-view justify-content-md-center">
-          <Route exact path="/" render={() => {
-           return movies.map(m => (
-              <Col  md={3} key={m._id}>
-                <MovieCard movie={m} />
-              </Col>
-            ))
-          }} />
-             </Row>
+        <Route exact path="/" render={() => {
+  if (!user) return <Col>
+    <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+  </Col>
+  return movies.map(m => (
+    <Col md={3} key={m._id}>
+      <MovieCard movie={m} />
+    </Col>
+  ))
+}} />
+<Route path="/register" render={() => {
+  return <Col>
+    <RegistrationView />
+  </Col>
+}} />
+</Row>
+
     
  <Row className="justify-content-md-center">
           <Route path="/movies/:movieId" render={({ match, history }) => {
@@ -126,10 +130,7 @@ onLoggedIn(user) {
             )}
           />
 
-
-          
-
-             <Route
+<Route
             path="/genres/:genreName"
             render={({ match, history }) => (
               <GenreView
@@ -140,7 +141,7 @@ onLoggedIn(user) {
                 }
                 genreMovies={movies.filter(
                   (m) => m.genre.name === match.params.genreName
-                ) }
+                )}
                 onBackClick={() => history.goBack()}
               />
             )}
