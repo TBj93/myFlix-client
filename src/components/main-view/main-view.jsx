@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
 import { LoginView } from '../login-view/login-view';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -65,6 +67,7 @@ onLoggedIn(user) {
     if (movies.length === 0) return <div className="main-view"></div>;
   
     return (
+      <Container>
       <Router>
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
@@ -75,32 +78,54 @@ onLoggedIn(user) {
             ))
           }} />
           
-          <Route exact path="/directors" render={({ history }) => {
-           return directors.map(d => (
-              <Col  rmd={3} key={d._id}>
-                <DirectorView director={d} onBackClick={() => history.goBack()}/>
-              </Col>
-            ))
-          }} />
-
+    
+ <Row className="justify-content-md-center">
           <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={8}>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
             </Col>
           }} />
+          </Row>
                   
-                    <Route
-            path="/directors/:directorId"
-            render={({ match, history }) => {
-              return <Col md={8}>
-                <DirectorView director={directors.find(d => d._id === match.params.directorid)} onBackClick={() => history.goBack()}/>
-              </Col>
-            }} />
-              
+          <Route
+            path="/directors/:directorName"
+            render={({ match, history }) => (
+              <DirectorView
+                director={
+                  movies.find(
+                    (m) => m.director.name === match.params.directorName
+                  ).director  
+                  
+                }
+                directorMovies={movies.filter(
+                  (m) => m.director.name === match.params.directorName
+                )}
+                onBackClick={() => history.goBack()}
+              />
+            )}
+          />
+
+<Route
+            path="/genres/:genreName"
+            render={({ match, history }) => (
+              <GenreView
+                genre={
+                  movies.find(
+                    (m) => m.genre.name === match.params.genreName
+                  ).genre
+                }
+                genreMovies={movies.filter(
+                  (m) => m.genre.name === match.params.genreName
+                )}
+                onBackClick={() => history.goBack()}
+              />
+            )}
+          />
             
           
         </Row>
       </Router>
+            </Container>
     );
 }
 }

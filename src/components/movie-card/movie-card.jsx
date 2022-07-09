@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 export class MovieCard extends React.Component {
 
   render() {
-    const { movie, onMovieClick } = this.props;
+    const { movie} = this.props;
 
     
     return (
       <Card style={{ width: '18rem',}} >
-  <Card.Img variant="top" src={movie.ImagePath} />
+  <Card.Img variant="top" src={movie.imagePath} />
         <Card.Body>
-          <Card.Title  className="movie-title">{movie.Title}</Card.Title>
-          <Card.Text className="movie-description">{movie.Description}</Card.Text>
+          <Card.Title  className="movie-title">{movie.title}</Card.Title>
+          <Card.Text className="movie-description">{movie.description}</Card.Text>
           <Link to={`/movies/${movie._id}`}>
             <Button variant="link">Open</Button>
           </Link>
