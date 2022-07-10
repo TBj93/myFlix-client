@@ -38,7 +38,7 @@ export function ProfileView(props) {
     console.log(FavoriteMovies);
           return (
             <Row className="justify-content-md-center">
-    
+        
               {favMovies.length === 0 ? (<p>no movies</p>) : (
                 favMovies.map((movieId, k) => (
                   <Col md={6} >
@@ -54,7 +54,6 @@ export function ProfileView(props) {
     return (
     <Container>
 
-{renderFavMovies() }
 
     <Form>
       <Form.Group className="mb-3" controlId="formBasicUsername">
@@ -64,30 +63,8 @@ export function ProfileView(props) {
          
         </Form.Text>
       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-    
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicBirthday">
-        <Form.Label>Birthday</Form.Label>
-        <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="Birthday" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+<p>favmovies</p>
+      {renderFavMovies() }
 
      
     </Form>
