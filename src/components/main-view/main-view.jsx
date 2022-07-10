@@ -192,7 +192,7 @@ export class MainView extends React.Component {
      
 
       <Row className="justify-content-md-center">
-      <Route path={`/profile/${user}`} render={({history}) => {
+      <Route path={`/users/${user}`} render={({match, history}) => {
                    if (!user) return <Redirect to="/" />
                      return <Col>
                <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/>
