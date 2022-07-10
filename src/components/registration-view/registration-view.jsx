@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from 'axios';
   export function RegistrationView(props) {
     const [ username, setUsername ] = useState('');
@@ -12,7 +13,7 @@ import axios from 'axios';
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      axios.post('https://tims-movie-api.herokuapp.com/users', {
+      axios.post('https://tims-movie-api.herokuapp.com/register', {
         Username: username,
         Password: password,
         Email: email,
@@ -49,7 +50,7 @@ import axios from 'axios';
       </Container>
     </Navbar>
     
-    
+
     
     
     

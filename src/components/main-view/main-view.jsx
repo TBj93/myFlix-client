@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import './main-view.scss';
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { LoginView } from '../login-view/login-view';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -105,13 +105,15 @@ export class MainView extends React.Component {
     </Col>
   ))
 }} />
+
+</Row>
+<Route path="/" />
 <Route path="/register" render={() => {
+  if (user) return <Redirect to="/" />
   return <Col>
     <RegistrationView />
   </Col>
 }} />
-</Row>
-
     
  <Row className="justify-content-md-center">
           <Route path="/movies/:movieId" render={({ match, history }) => {
