@@ -16,47 +16,52 @@ import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react
 
 export class MainView extends React.Component {
 
-  constructor(){
+  constructor() {
     super();
+    // Initial state is set to null
     this.state = {
       movies: [],
-      directors: [],
-      selectedMovie: null,
       user: null
+    };
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
     }
   }
 
-  componentDidMount(){
-    Promise.all([
-      axios.get("https://tims-movie-api.herokuapp.com/movies"),
-      axios.get("https://tims-movie-api.herokuapp.com/director")
-  ])
-  .then(response => {
-    this.setState({
-     movies : response[0].data,
-      directors : response[1].data
-    });
-  
-})
-      .catch(error => {
+  getMovies(token) {
+    axios.get('https://tims-movie-api.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        // Assign the result to the state
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(function (error) {
         console.log(error);
       });
-
   }
 
-/* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
+  /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
 
-onLoggedIn(authData) {
-  console.log(authData);
-  this.setState({
-    user: authData.user.Username
-  });
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
 
-  localStorage.setItem('token', authData.token);
-  localStorage.setItem('user', authData.user.Username);
-  this.getMovies(authData.token);
-}
-
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
   render() {
 
     
