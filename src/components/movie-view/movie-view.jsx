@@ -82,9 +82,11 @@ export class MovieView extends React.Component {
               
                     <br></br>
                    <br></br>
-              <Button variant="primary" type="submit"  onClick={() => { onBackClick();  }}>
-                             Back
-                  </Button>
+                   <Link to={`/`}>
+              <Button variant="primary" >
+                     Back
+                </Button>
+                    </Link>
                    </Form>
 
 
