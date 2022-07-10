@@ -6,6 +6,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
 import { GenreView } from '../genre-view/genre-view';
 import { LoginView } from '../login-view/login-view';
+import { ProfileView } from '../profile-view/profile-view';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -91,7 +92,8 @@ export class MainView extends React.Component {
       <Nav className="me-auto">
       
         <Nav className="me-auto">
-        <Nav.Link href="#home">Profile</Nav.Link>
+        <Nav.Link href={`/profile/${user}`}>Profile</Nav.Link>
+        <Nav.Link href="/">Login</Nav.Link>
         <Nav.Link href="register"  type="submit">Register</Nav.Link>
       </Nav>
 
@@ -107,7 +109,7 @@ export class MainView extends React.Component {
    
 
       <Router>
-        <Row className="main-view justify-content-md-center">
+        <Row className="main-view justify-content-md-center" md={8}>
         <Route exact path="/" render={() => {
   if (!user) return <Col>
     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
@@ -187,10 +189,17 @@ export class MainView extends React.Component {
               /></Col>
           }} />
           </Row>
+     
 
-              
-    
-      </Router>
+      <Row className="justify-content-md-center">
+      <Route path={`/profile/${user}`} render={({history}) => {
+                   if (!user) return <Redirect to="/" />
+                     return <Col>
+               <ProfileView user={user} movie={movies} onBackClick={() => history.goBack()}/>
+                      </Col>
+              }} />
+          </Row>
+          </Router>
             </Container>
     );
 }
