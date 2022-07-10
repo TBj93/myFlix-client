@@ -195,7 +195,7 @@ export class MainView extends React.Component {
       <Route path={`/profile/${user}`} render={({history}) => {
                    if (!user) return <Redirect to="/" />
                      return <Col>
-               <ProfileView user={user} movie={movies} onBackClick={() => history.goBack()}/>
+               <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/>
                       </Col>
               }} />
           </Row>

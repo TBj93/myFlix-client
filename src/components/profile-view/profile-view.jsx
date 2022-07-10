@@ -5,23 +5,27 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { MovieCard } from '../movie-card/movie-card';
 import { Link } from "react-router-dom";
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 export function ProfileView(props) {
+
+    
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
     const [ birthday, setBirthday ] = useState('');
-     const [ favMovies, setFavMovies ] = useState('');
+     const [ FavoriteMovies, setFavMovies ] = useState('');
   
-    const ViewUser = (e) => {
+    ViewUser = (e) => {
         let token = localStorage.getItem('token');
         let user = localStorage.getItem('user');
-      axios.get('https://tims-movie-api.herokuapp.com/profile/${user}', {
+      axios.get('https://tims-movie-api.herokuapp.com/users/test12345', {
         headers: { Authorization: `Bearer ${token}` }
       })
-        .then(response => {
+        .then((response) => {
           // Assign the result to the state
           setUsername(response.data.Username)
           setEmail(response.data.Email)
@@ -33,14 +37,17 @@ export function ProfileView(props) {
         });
     };
 
-    const renderFavMovies = () => {
-    
-    console.log(favMovies);
+
+
+
+     renderFavMovies = () => {
+    console.log('test');
+    console.log(FavoriteMovies.length);
           return (
             <Row className="justify-content-md-center">
     
-              {favMovies.length === 0 ? (<p>no movies</p>) : (
-                favMovies.map((movieId, k) => (
+              {FavoriteMovies.length === 0 ? (<p>no movies</p>) : (
+                FavoriteMovies.map((movieId, k) => (
                   <Col md={6} >
                     <MovieCard key={`${k}-${movieId}`} movie={movies.find(m => m._id == movieId)} />
                   </Col>
@@ -53,7 +60,7 @@ export function ProfileView(props) {
     
     return (
     <Container>
-
+{ViewUser()}
 {renderFavMovies() }
 
     <Form>
@@ -65,29 +72,11 @@ export function ProfileView(props) {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+   
     
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+     
 
-      <Form.Group className="mb-3" controlId="formBasicBirthday">
-        <Form.Label>Birthday</Form.Label>
-        <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="Birthday" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+     
 
      
     </Form>
