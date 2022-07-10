@@ -18,7 +18,7 @@ export function ProfileView(props) {
     const ViewUser = (e) => {
         let token = localStorage.getItem('token');
         let user = localStorage.getItem('user');
-      axios.get('https://tims-movie-api.herokuapp.com/profile/${user}', {
+      axios.get(`https://tims-movie-api.herokuapp.com/users/${user}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
         .then(response => {
