@@ -115,16 +115,26 @@ export class MainView extends React.Component {
     
  <Row className="justify-content-md-center">
           <Route path="/movies/:movieId" render={({ match, history }) => {
+
+          if (!user) return <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+             </Col>
+
             return <Col md={8}>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} onBackClick={() => history.goBack()}/>
             </Col>
           }} />
           </Row>
-                  
-          <Route
-            path="/directors/:directorName"
-            render={({ match, history }) => (
-              <DirectorView
+
+          <Row className="justify-content-md-center">
+          <Route path="/directors/:directorName" render={({ match, history }) => {
+
+          if (!user) return <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+             </Col>
+
+            return <Col md={8}>
+               <DirectorView
                 director={
                   movies.find(
                     (m) => m.director.name === match.params.directorName
@@ -135,14 +145,20 @@ export class MainView extends React.Component {
                   (m) => m.director.name === match.params.directorName
                 )}
                 onBackClick={() => history.goBack()}
-              />
-            )}
-          />
+              /></Col>
+          }} />
+          </Row>
 
-<Route
-            path="/genres/:genreName"
-            render={({ match, history }) => (
-              <GenreView
+
+          <Row className="justify-content-md-center">
+          <Route   path="/genres/:genreName" render={({ match, history }) => {
+
+          if (!user) return <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+             </Col>
+
+            return <Col md={8}>
+                <GenreView
                 genre={
                   movies.find(
                     (m) => m.genre.name === match.params.genreName
@@ -152,11 +168,11 @@ export class MainView extends React.Component {
                   (m) => m.genre.name === match.params.genreName
                 )}
                 onBackClick={() => history.goBack()}
-              />
-            )}
-          />
-            
-          
+              /></Col>
+          }} />
+          </Row>
+
+              
     
       </Router>
             </Container>
