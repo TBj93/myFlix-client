@@ -38,17 +38,7 @@ export function LoginView(props) {
 <Navbar bg="primary" expand="xl">
   <Container>
 
-      <Container>
-        <Navbar.Brand href="#home">Welcome to MyFlix</Navbar.Brand>
-      </Container>
-   
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="register"  type="submit">Register</Nav.Link>
-      </Nav>
-    </Navbar.Collapse>
+    
   </Container>
 </Navbar>
 
@@ -72,7 +62,7 @@ export function LoginView(props) {
     <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
   <Button variant="primary" type="submit" onClick={handleSubmit}>
-    Submit
+    Login
   </Button>
 </Form>
 

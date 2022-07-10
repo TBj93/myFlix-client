@@ -62,6 +62,16 @@ export class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
+  
   render() {
 
     
@@ -79,18 +89,22 @@ export class MainView extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.2">Info</NavDropdown.Item>
-        </NavDropdown>
+      
+        <Nav className="me-auto">
+        <Nav.Link href="#home">Profile</Nav.Link>
+        <Nav.Link href="register"  type="submit">Register</Nav.Link>
+      </Nav>
+
+        <Button variant="primary"   onClick={() => { this.onLoggedOut() }}>
+  Logout
+  </Button>
+        
       </Nav>
     </Navbar.Collapse>
       </Container>
     </Navbar>
 
-
+   
 
       <Router>
         <Row className="main-view justify-content-md-center">
