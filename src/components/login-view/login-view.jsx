@@ -37,17 +37,16 @@ export function LoginView(props) {
 <Container>
 <Navbar bg="primary" expand="xl">
   <Container>
-  
+
+      <Container>
+        <Navbar.Brand href="#home">Welcome to MyFlix</Navbar.Brand>
+      </Container>
+   
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link href="#home">Home</Nav.Link>
         <Nav.Link href="register"  type="submit">Register</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-          <NavDropdown.Divider />
-          <NavDropdown.Item href="#action/3.2">Info</NavDropdown.Item>
-        </NavDropdown>
       </Nav>
     </Navbar.Collapse>
   </Container>
