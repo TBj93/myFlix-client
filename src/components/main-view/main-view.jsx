@@ -46,10 +46,15 @@ export class MainView extends React.Component {
 
 /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
 
-onLoggedIn(user) {
+onLoggedIn(authData) {
+  console.log(authData);
   this.setState({
-    user
+    user: authData.user.Username
   });
+
+  localStorage.setItem('token', authData.token);
+  localStorage.setItem('user', authData.user.Username);
+  this.getMovies(authData.token);
 }
 
   render() {
@@ -61,7 +66,7 @@ onLoggedIn(user) {
 
     
   
-    if (movies.length === 0) return <div className="main-view"></div>;
+  
   
     return (
       <Container fluid>
@@ -71,12 +76,7 @@ onLoggedIn(user) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.2">Info</NavDropdown.Item>
-            </NavDropdown>
+           
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -90,6 +90,7 @@ onLoggedIn(user) {
   if (!user) return <Col>
     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
   </Col>
+    if (movies.length === 0) return <div className="main-view"></div>;
   return movies.map(m => (
     <Col md={3} key={m._id}>
       <MovieCard movie={m} />
