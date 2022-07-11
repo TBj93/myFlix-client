@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { MovieCard } from '../movie-card/movie-card';
 import { RegistrationView } from '../registration-view/registration-view';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-export function ProfileView(props) {
+export function ProfileView({ movies }) {
 
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
@@ -40,7 +42,7 @@ export function ProfileView(props) {
 
     const renderFavMovies = () => {
     
-    console.log(FavoriteMovies);
+ 
           return (
             <Row className="justify-content-md-center">
         
@@ -63,7 +65,8 @@ export function ProfileView(props) {
 
    
 
-    
+           {renderFavMovies()}
+
 
      
                 </Form>

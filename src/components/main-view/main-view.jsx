@@ -116,7 +116,7 @@ export class MainView extends React.Component {
   </Col>
     if (movies.length === 0) return <div className="main-view"></div>;
   return movies.map(m => (
-    <Col md={3} key={m._id}>
+    <Col md={3} lg={4} key={m._id}>
       <MovieCard movie={m} />
     </Col>
   ))
@@ -195,7 +195,7 @@ export class MainView extends React.Component {
       <Route path={`/users/${user}`} render={({match, history}) => {
                    if (!user) return <Redirect to="/" />
                      return <Col>
-               <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/>
+               <ProfileView user={user} history={history} movies={movies} onBackClick={() => history.goBack()}/>
                       </Col>
               }} />
           </Row>

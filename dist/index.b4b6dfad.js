@@ -27034,7 +27034,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                             className: "me-auto",
                                             children: [
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Nav).Link, {
-                                                    href: `/profile/${user1}`,
+                                                    href: `/users/${user1}`,
                                                     children: "Profile"
                                                 }, void 0, false, {
                                                     fileName: "src/components/main-view/main-view.jsx",
@@ -27116,6 +27116,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                     }, void 0, false, void 0, void 0);
                                     return movies.map((m)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                             md: 3,
+                                            lg: 4,
                                             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                                                 movie: m
                                             }, void 0, false, void 0, void 0)
@@ -27250,6 +27251,7 @@ class MainView extends (0, _reactDefault.default).Component {
                                     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _profileView.ProfileView), {
                                             user: user1,
+                                            history: history,
                                             movies: movies,
                                             onBackClick: ()=>history.goBack()
                                         }, void 0, false, void 0, void 0)
@@ -43820,6 +43822,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _movieCard = require("../movie-card/movie-card");
 var _registrationView = require("../registration-view/registration-view");
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
@@ -43827,17 +43830,22 @@ var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
-function ProfileView(props) {
+function ProfileView({ movies  }) {
     _s();
     const [username, setUsername] = (0, _react.useState)("");
     const [password, setPassword] = (0, _react.useState)("");
     const [email, setEmail] = (0, _react.useState)("");
     const [birthday, setBirthday] = (0, _react.useState)("");
     const [favMovies, setFavMovies] = (0, _react.useState)("");
-    const ViewUser = (e)=>{
+    (0, _react.useEffect)(()=>{
+        viewUser();
+    }, []);
+    const viewUser = (e)=>{
         let token = localStorage.getItem("token");
         let user = localStorage.getItem("user");
         (0, _axiosDefault.default).get(`https://tims-movie-api.herokuapp.com/users/${user}`, {
@@ -43855,93 +43863,55 @@ function ProfileView(props) {
         });
     };
     const renderFavMovies = ()=>{
-        console.log(FavoriteMovies);
         return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
             className: "justify-content-md-center",
             children: favMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 children: "no movies"
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 42,
+                lineNumber: 49,
                 columnNumber: 42
-            }, this) : favMovies.map((movieId, k)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(Col, {
+            }, this) : favMovies.map((movieId, k)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                     md: 6,
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(MovieCard, {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                         movie: movies.find((m)=>m._id == movieId)
                     }, `${k}-${movieId}`, false, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 45,
+                        lineNumber: 52,
                         columnNumber: 21
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 44,
+                    lineNumber: 51,
                     columnNumber: 19
                 }, this))
         }, void 0, false, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 40,
+            lineNumber: 47,
             columnNumber: 13
         }, this);
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
-                    className: "mb-3",
-                    controlId: "formBasicUsername",
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Label, {
-                            children: "Username : `"
-                        }, void 0, false, {
-                            fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 60,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
-                            type: "text",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value),
-                            placeholder: "Enter Username"
-                        }, void 0, false, {
-                            fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 61,
-                            columnNumber: 9
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Text, {
-                            className: "text-muted"
-                        }, void 0, false, {
-                            fileName: "src/components/profile-view/profile-view.jsx",
-                            lineNumber: 62,
-                            columnNumber: 9
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 59,
-                    columnNumber: 7
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                    children: "favmovies"
-                }, void 0, false, {
-                    fileName: "src/components/profile-view/profile-view.jsx",
-                    lineNumber: 66,
-                    columnNumber: 1
-                }, this),
-                renderFavMovies()
-            ]
-        }, void 0, true, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
+                children: renderFavMovies()
+            }, void 0, false, {
+                fileName: "src/components/profile-view/profile-view.jsx",
+                lineNumber: 64,
+                columnNumber: 12
+            }, this)
+        }, void 0, false, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 58,
-            columnNumber: 5
+            lineNumber: 63,
+            columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 55,
-        columnNumber: 5
+        lineNumber: 62,
+        columnNumber: 7
     }, this);
 }
-_s(ProfileView, "IC2Cmsz5/jKRCgknjmcwtdkWL28=");
+_s(ProfileView, "nJST1t2fpgZKs55p+4py8ZXJvZ0=");
 _c = ProfileView;
 var _c;
 $RefreshReg$(_c, "ProfileView");
@@ -43951,6 +43921,6 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../registration-view/registration-view":"3U8r7","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"i7OxZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5IF60"}],"lJZlQ":[function() {},{}]},["aBx1Q","8qTVB","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../registration-view/registration-view":"3U8r7","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"i7OxZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5IF60","react-bootstrap/Col":"2L2I6","../movie-card/movie-card":"bwuIu"}],"lJZlQ":[function() {},{}]},["aBx1Q","8qTVB","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
