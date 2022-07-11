@@ -64,7 +64,7 @@ export function ProfileView({ movies }) {
            <Form>
 
    
-
+<p>   {username}'s        Favorite movies      </p>
            {renderFavMovies()}
 
 
