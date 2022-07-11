@@ -92,7 +92,7 @@ export class MainView extends React.Component {
       <Nav className="me-auto">
       
         <Nav className="me-auto">
-        <Nav.Link href={`/profile/${user}`}>Profile</Nav.Link>
+        <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
         <Nav.Link href="/">Login</Nav.Link>
         <Nav.Link href="register"  type="submit">Register</Nav.Link>
       </Nav>

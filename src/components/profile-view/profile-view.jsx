@@ -15,7 +15,12 @@ export function ProfileView(props) {
     const [ birthday, setBirthday ] = useState('');
      const [ favMovies, setFavMovies ] = useState('');
   
-    const ViewUser = (e) => {
+     useEffect(() => {
+      viewUser()
+    }, [])
+
+
+    const viewUser = (e) => {
         let token = localStorage.getItem('token');
         let user = localStorage.getItem('user');
       axios.get(`https://tims-movie-api.herokuapp.com/users/${user}`, {
@@ -52,24 +57,20 @@ export function ProfileView(props) {
         }
     
     return (
-    <Container>
+      <div>
+        <Container>
+           <Form>
 
+   
 
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicUsername">
-        <Form.Label>Username : `</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
-        <Form.Text className="text-muted">
-         
-        </Form.Text>
-      </Form.Group>
-<p>favmovies</p>
-      {renderFavMovies() }
+    
 
      
-    </Form>
+                </Form>
     
         </Container>
+        </div>
+   
         )
   
     }
