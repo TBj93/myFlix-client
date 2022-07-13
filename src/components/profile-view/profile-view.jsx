@@ -87,9 +87,17 @@ const deleteUser = (e) => {
 <p>   {username}'s        Favorite movies      </p>
            {renderFavMovies()}
 
-
+           <br></br>
+                   <br></br>
+                   <Link to={`/`}>
+              <Button variant="primary" >
+                     Back
+                </Button>
+                    </Link>
+                   
      
-               
+                    <br></br>
+                   <br></br>
 
                 <Button variant="primary" type="submit" onClick={deleteUser}>
         DELETE COMPLETE USER PROFILE: ARE YOU FREAKING SURE!?

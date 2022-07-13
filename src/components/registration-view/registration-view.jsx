@@ -57,6 +57,10 @@ import axios from 'axios';
 
 
     const handleSubmit = (e) => {
+
+      const isReq = validate();
+      if (isReq) {
+
       e.preventDefault();
       axios.post('https://tims-movie-api.herokuapp.com/register', {
         Username: username,
@@ -72,6 +76,7 @@ import axios from 'axios';
       .catch(e => {
         console.log('error registering the user')
       });
+    }
     };
 
 
