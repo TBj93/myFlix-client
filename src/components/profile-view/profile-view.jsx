@@ -57,6 +57,26 @@ export function ProfileView({ movies }) {
             </Row>
           )
         }
+
+const deleteUser = (e) => {
+
+  let token = localStorage.getItem('token');
+  let user = localStorage.getItem('user');
+  axios.delete(`https://tims-movie-api.herokuapp.com/users/${user}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+ 
+  .then(response => {
+    
+    console.log(data);
+    window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+  })
+  .catch(e => {
+    console.log('error DELETING the user')
+  });
+
+}
+
     
     return (
       <div>
@@ -69,7 +89,13 @@ export function ProfileView({ movies }) {
 
 
      
-                </Form>
+               
+
+                <Button variant="primary" type="submit" onClick={deleteUser}>
+        DELETE COMPLETE USER PROFILE: ARE YOU FREAKING SURE!?
+      </Button>
+    </Form>
+
     
         </Container>
         </div>

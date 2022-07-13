@@ -43891,6 +43891,20 @@ function ProfileView({ movies  }) {
             columnNumber: 13
         }, this);
     };
+    const deleteUser = (e)=>{
+        let token = localStorage.getItem("token");
+        let user = localStorage.getItem("user");
+        (0, _axiosDefault.default).delete(`https://tims-movie-api.herokuapp.com/users/${user}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            console.log(data);
+            window.open("/", "_self"); // the second argument '_self' is necessary so that the page will open in the current tab
+        }).catch((e)=>{
+            console.log("error DELETING the user");
+        });
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -43903,24 +43917,34 @@ function ProfileView({ movies  }) {
                         ]
                     }, void 0, true, {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 67,
+                        lineNumber: 87,
                         columnNumber: 1
                     }, this),
-                    renderFavMovies()
+                    renderFavMovies(),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
+                        variant: "primary",
+                        type: "submit",
+                        onClick: deleteUser,
+                        children: "DELETE COMPLETE USER PROFILE: ARE YOU FREAKING SURE!?"
+                    }, void 0, false, {
+                        fileName: "src/components/profile-view/profile-view.jsx",
+                        lineNumber: 94,
+                        columnNumber: 17
+                    }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 64,
+                lineNumber: 84,
                 columnNumber: 12
             }, this)
         }, void 0, false, {
             fileName: "src/components/profile-view/profile-view.jsx",
-            lineNumber: 63,
+            lineNumber: 83,
             columnNumber: 9
         }, this)
     }, void 0, false, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 62,
+        lineNumber: 82,
         columnNumber: 7
     }, this);
 }
@@ -43934,6 +43958,6 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../registration-view/registration-view":"3U8r7","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"i7OxZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5IF60","react-bootstrap/Col":"2L2I6","../movie-card/movie-card":"bwuIu"}],"lJZlQ":[function() {},{}]},["aBx1Q","8qTVB","d8Dch"], "d8Dch", "parcelRequireaec4")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","../movie-card/movie-card":"bwuIu","../registration-view/registration-view":"3U8r7","react-router-dom":"cHIiW","react-bootstrap":"3AD9A","react-bootstrap/Container":"hEdsw","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"i7OxZ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5IF60"}],"lJZlQ":[function() {},{}]},["aBx1Q","8qTVB","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
