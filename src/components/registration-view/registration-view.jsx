@@ -6,6 +6,9 @@ import Container from 'react-bootstrap/Container';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import axios from 'axios';
   export function RegistrationView(props) {
+  
+  
+  
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ email, setEmail ] = useState('');
@@ -18,6 +21,8 @@ import axios from 'axios';
  const [passwordErr, setPasswordErr] = useState('');
  const [emailErr, setEmailErr] = useState('');
  const [birthdayErr, setBirthdayErr] = useState('');
+
+
 
  // Vvalidation
  const validate = () => {
@@ -46,12 +51,12 @@ import axios from 'axios';
    return isReq;
  }
 
-
+ 
 
 
     const handleSubmit = (e) => {
 
-      const isReq = validate();
+     const isReq = validate();
       if (isReq) {
 
       e.preventDefault();
@@ -63,8 +68,9 @@ import axios from 'axios';
       })
       .then(response => {
         const data = response.data;
-        console.log(data);
-        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+          console.log(data);
+          alert("Registration successful, please login!");
+          window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       })
       .catch(e => {
         console.log('error registering the user')
@@ -82,36 +88,40 @@ import axios from 'axios';
     
     
     <Form>
-      <Form.Group className="mb-3" controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
-        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
-        <Form.Text className="text-muted">
-         
-        </Form.Text>
-      </Form.Group>
+    <Form.Group controlId="formUsername">
+        <Form.Label>Username:</Form.Label>
+        <Form.Control type="text" placeholder="Enter username" value={username} onChange={e => setUsername(e.target.value)} />
+        {/* code added here to display validation error */}
+        {usernameErr && <p>{usernameErr}</p>}
+</Form.Group>
+
+      <Form.Group controlId="formPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
+        {/* code added here to display validation error */}
+        {passwordErr && <p>{passwordErr}</p>}
+</Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email</Form.Label>
         <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
+        
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
+          {/* code added here to display validation error */}
+          {emailErr && <p>{emailErr}</p>}
       </Form.Group>
     
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
+   
 
       <Form.Group className="mb-3" controlId="formBasicBirthday">
         <Form.Label>Birthday</Form.Label>
         <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="Birthday" />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
         </Form.Text>
+         {/* code added here to display validation error */}
+         {birthdayErr && <p>{birthdayErr}</p>}
       </Form.Group>
 
       <Button variant="primary" type="submit" onClick={handleSubmit}>

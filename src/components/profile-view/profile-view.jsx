@@ -59,48 +59,50 @@ export function ProfileView({ movies }) {
         }
 
 const deleteUser = (e) => {
-
-  let token = localStorage.getItem('token');
   let user = localStorage.getItem('user');
-  axios.delete(`https://tims-movie-api.herokuapp.com/users/${user}`, {
-    headers: { Authorization: `Bearer ${token}` }
-  })
- 
-  .then(response => {
-    
+  let token = localStorage.getItem('token');
+  e.preventDefault();
+  axios.delete(`https://tims-movie-api.herokuapp.com/deregister/${user}`, {
+  
+   headers: {
+      Authorization: 'Bearer ' + token
+    }
+  }).then(response => {
+    alert('profile has been deleted');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     console.log(data);
     window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
   })
   .catch(e => {
-    console.log('error updating the user')
+    console.log('error deleting the user')
   });
 
 }
 
 const handleSubmit = (e) => {
 
+  e.preventDefault();
   let token = localStorage.getItem('token');
   let user = localStorage.getItem('user');
   axios.put(`https://tims-movie-api.herokuapp.com/update/${user}`, {
-    headers: { Authorization: `Bearer ${token}` },
-    Username: username,
-    Password: password,
-    Email: email,
-    Birthday: birthday
-  })
- 
-  .then(response => {
-    
+      Username: username,
+      Email: email, //Email is a variable which holds the email
+      Birthday: birthday,
+      Password: password
+    },
+      {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      }).then(response => {
+    alert(' profile has been updated');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     console.log(data);
     window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
   
-  })
-  .then(response => {
-    const data = response.data;
-    console.log(data);
-    window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
-  })
-  .catch(e => {
+  }) .catch(e => {
     console.log('error updating user info')
   });
 
