@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import './main-view.scss';
+
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+import MoviesList from '../movies-list/movies-list';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { DirectorView } from '../director-view/director-view';
@@ -15,13 +19,12 @@ import { RegistrationView } from '../registration-view/registration-view';
 import Navbar from 'react-bootstrap/Navbar'
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
 
   constructor() {
     super();
     // Initial state is set to null
     this.state = {
-      movies: [],
       user: null
     };
   }
@@ -42,9 +45,7 @@ export class MainView extends React.Component {
     })
       .then(response => {
         // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -74,9 +75,10 @@ export class MainView extends React.Component {
 
   
   render() {
-
+    let { movies } = this.props;
+    let { user } = this.state;
     
-    const { movies, directors, selectedMovie, user } = this.state;
+    const {  directors, selectedMovie } = this.state;
   
    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
 
@@ -115,11 +117,8 @@ export class MainView extends React.Component {
     <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
   </Col>
     if (movies.length === 0) return <div className="main-view"></div>;
-  return movies.map(m => (
-    <Col md={3} lg={4} key={m._id}>
-      <MovieCard movie={m} />
-    </Col>
-  ))
+    return <MoviesList movies={movies}/>;
+ 
 }} />
 
 </Row>
@@ -205,4 +204,13 @@ export class MainView extends React.Component {
 }
 }
 
-export default MainView;
+
+let mapStateToProps = store => {
+  return { 
+      movies: store.movies
+      
+  }
+}
+
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
