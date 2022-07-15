@@ -72,10 +72,39 @@ const deleteUser = (e) => {
     window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
   })
   .catch(e => {
-    console.log('error DELETING the user')
+    console.log('error updating the user')
   });
 
 }
+
+const handleSubmit = (e) => {
+
+  let token = localStorage.getItem('token');
+  let user = localStorage.getItem('user');
+  axios.put(`https://tims-movie-api.herokuapp.com/update/${user}`, {
+    headers: { Authorization: `Bearer ${token}` },
+    Username: username,
+    Password: password,
+    Email: email,
+    Birthday: birthday
+  })
+ 
+  .then(response => {
+    
+    console.log(data);
+    window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+  
+  })
+  .then(response => {
+    const data = response.data;
+    console.log(data);
+    window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+  })
+  .catch(e => {
+    console.log('error updating user info')
+  });
+
+};
 
     
     return (
@@ -83,8 +112,10 @@ const deleteUser = (e) => {
         <Container>
            <Form>
 
-   
-<p>   {username}'s        Favorite movies      </p>
+
+   <div className="favMovieHeader">
+   <span className="label">{username}'s        Favorite Movies: </span>
+
            {renderFavMovies()}
 
            <br></br>
@@ -93,14 +124,56 @@ const deleteUser = (e) => {
               <Button variant="primary" >
                      Back
                 </Button>
-                    </Link>
-                   
+                   </Link>
+     </div>    
      
                     <br></br>
                    <br></br>
 
+
+
+
+                   <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="text" value={username} onChange={e => setUsername(e.target.value)} placeholder="Enter Username" />
+        <Form.Text className="text-muted">
+         
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="text" value={email} onChange={e => setEmail(e.target.value)} placeholder="Enter Email" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+    
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Password" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Check type="checkbox" label="Check me out" />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicBirthday">
+        <Form.Label>Birthday</Form.Label>
+        <Form.Control type="text" value={birthday} onChange={e => setBirthday(e.target.value)} placeholder="Birthday" />
+        <Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+      <Button variant="primary" type="submit" onClick={handleSubmit}>
+        Update Userdata
+      </Button>
+
+      <br></br>
+                   <br></br>
+
                 <Button variant="primary" type="submit" onClick={deleteUser}>
-        DELETE COMPLETE USER PROFILE: ARE YOU FREAKING SURE!?
+       WARNING: Clicking will delete the user profile
       </Button>
     </Form>
 
