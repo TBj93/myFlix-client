@@ -123,7 +123,7 @@ class MainView extends React.Component {
 
 </Row>
 <Route path="/" />
-<Route path="/register" render={() => {
+<Route exact path="/register" render={() => {
   if (user) return <Redirect to="/" />
   return <Col>
     <RegistrationView />

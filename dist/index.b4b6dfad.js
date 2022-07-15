@@ -39312,6 +39312,7 @@ class MainView extends (0, _reactDefault.default).Component {
                             columnNumber: 1
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
+                            exact: true,
                             path: "/register",
                             render: ()=>{
                                 if (user1) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Redirect), {
