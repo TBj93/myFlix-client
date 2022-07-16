@@ -3,7 +3,7 @@ import axios from 'axios';
 import './main-view.scss';
 
 import { connect } from 'react-redux';
-import { setMovies } from '../../actions/actions';
+import { setMovies, setUser } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -76,7 +76,7 @@ class MainView extends React.Component {
   
   render() {
     let { movies } = this.props;
-    let { user } = this.state;
+    let { user } = this.props;
     
     const {  directors, selectedMovie } = this.state;
   
@@ -207,10 +207,11 @@ class MainView extends React.Component {
 
 let mapStateToProps = store => {
   return { 
-      movies: store.movies
+      movies: store.movies,
+      user: store.user
       
   }
 }
 
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
