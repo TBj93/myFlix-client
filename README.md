@@ -13,3 +13,9 @@ A validation for form as well as authorization via JWT is implemented to have a 
 ### Requirements
 This programm is using react.js as well as react-redux. Latest browser version is required in all popular browsers.
 
+
+
+
+![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix1.PNG?raw=true)
+![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix2.PNG?raw=true)
+
