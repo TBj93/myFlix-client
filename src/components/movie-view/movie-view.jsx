@@ -4,22 +4,38 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem,  history } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import './movie-view.scss'
+import axios from 'axios';
 import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
-    render() {
-        const { director, movie, onBackClick } = this.props;
-    
-  
 
-        
+
+  constructor(props) {
+    super(props);
+
+  }
+
+  removeFavoriteMovie() {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+
+    axios.delete(`https://tims-movie-api.herokuapp.com/${user}/remove/${this.props.movie._id}`,{
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(response => {
+        alert(`Removed from list`)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+
+  render() {
+        const { director, movie, onBackClick } = this.props;
+       
         return (
 
-
-<Container>
-
-
-
-         
+<Container>         
        
 
           <div className="movie-view">
@@ -64,7 +80,14 @@ export class MovieView extends React.Component {
                      Learn more about  {movie.genre.name}
                 </Button>
                     </Link>
-              
+                    <br></br>
+                   <br></br>
+
+                <Button variant="primary"  value={movie._id} onClick={(e) => this.removeFavoriteMovie(e, movie)}>
+                Remove from Favorites' list
+                </Button>
+         
+
                     <br></br>
                    <br></br>
                    <Link to={`/`}>
