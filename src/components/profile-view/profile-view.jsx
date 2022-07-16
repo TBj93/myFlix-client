@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import './profile-view.scss';
 export function ProfileView({ movies }) {
 
     const [ username, setUsername ] = useState('');
@@ -117,8 +117,9 @@ const handleSubmit = (e) => {
 
 
    <div className="favMovieHeader">
-   <span className="label">{username}'s        Favorite Movies: </span>
-
+   <span className="header"><h1 className="header"> {username}'s        Favorite Movies: </h1> </span>
+   <br></br>
+                   <br></br>
            {renderFavMovies()}
 
            <br></br>
@@ -132,9 +133,6 @@ const handleSubmit = (e) => {
      
                     <br></br>
                    <br></br>
-
-
-
 
                    <Form.Group className="mb-3" controlId="formBasicUsername">
         <Form.Label>Username</Form.Label>
