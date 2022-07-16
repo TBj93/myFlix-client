@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { propTypes } from 'react-bootstrap/esm/Image';
 export function ProfileView({ movies }) {
 
     const [ username, setUsername ] = useState('');
@@ -186,3 +187,12 @@ const handleSubmit = (e) => {
         )
   
     }
+
+    ProfileView.propTypes = {
+      user: PropTypes.shape({
+          Username: PropTypes.string.isRequired,
+          Password: PropTypes.string.isRequired,
+          Email: PropTypes.string.isRequired
+      }).isRequired,
+      onClick: PropTypes.func.isRequired
+    };
