@@ -11,7 +11,7 @@ The account can be updated and deleted. It also shows the user's favorite movies
 A validation for form as well as authorization via JWT is implemented to have a certain security standard. 
 
 ### Requirements
-This programm is using react.js as well as react-redux. Latest browser version is required in all popular browsers.
+This app is using react.js as well as react-redux. Latest browser version is required in all popular browsers.
 
 
 
