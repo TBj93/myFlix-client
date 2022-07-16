@@ -27027,7 +27027,7 @@ class MainView extends (0, _reactDefault.default).Component {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Navbar).Brand, {
-                                href: "#home",
+                                href: "/",
                                 children: "Welcome to MyFlix"
                             }, void 0, false, {
                                 fileName: "src/components/main-view/main-view.jsx",

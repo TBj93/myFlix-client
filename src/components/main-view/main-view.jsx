@@ -85,7 +85,7 @@ class MainView extends React.Component {
       <Container fluid>
 <Navbar bg="primary" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Welcome to MyFlix</Navbar.Brand>
+        <Navbar.Brand href="/">Welcome to MyFlix</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
