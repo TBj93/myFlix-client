@@ -15,6 +15,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { NavbarView } from '../navbar-view/navbar-view';
 import { RegistrationView } from '../registration-view/registration-view';
 import Navbar from 'react-bootstrap/Navbar'
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
@@ -77,37 +78,13 @@ class MainView extends React.Component {
     
     const {  directors, selectedMovie } = this.state;
   
-   /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-
-    
+  
   
     return (
-      <Container fluid>
-<Navbar bg="primary" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">Welcome to MyFlix</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-      
-        <Nav className="me-auto">
-        <Nav.Link href={`/users/${user}`}>Profile</Nav.Link>
-        <Nav.Link href="/">Login</Nav.Link>
-        <Nav.Link href="register"  type="submit">Register</Nav.Link>
-      </Nav>
-
-        <Button variant="primary"   onClick={() => { this.onLoggedOut() }}>
-  Logout
-  </Button>
         
-      </Nav>
-    </Navbar.Collapse>
-      </Container>
-    </Navbar>
-
-   
 
       <Router>
+        <NavbarView user={user} />
         <Row className="main-view justify-content-md-center" md={8}>
         <Route exact path="/" render={() => {
   if (!user) return <Col>
@@ -199,7 +176,7 @@ class MainView extends React.Component {
               }} />
           </Row>
           </Router>
-            </Container>
+           
     );
 }
 }

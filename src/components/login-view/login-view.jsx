@@ -4,7 +4,7 @@ import { RegistrationView } from '../registration-view/registration-view';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Form, Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
-import { Link } from "react-router-dom";
+
 import axios from 'axios';
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -62,12 +62,7 @@ export function LoginView(props) {
 
 
 <Container>
-<Navbar bg="primary" expand="xl">
-  <Container>
 
-    
-  </Container>
-</Navbar>
 
 
 
