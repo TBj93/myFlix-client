@@ -2,7 +2,7 @@
   "name": "myflix-client",
   "version": "1.0.0",
   "description": "The movies are being displayed in cards using react-bootstrap and contain a movie image, fetched by an external URL, as well as information about the genre and its director.\r This client uses axios to fetch movies from a database, that is deployed on heroku  [Link](https://tims-movie-api.herokuapp.com/). \r It's interactive and this client also provides the possiblity to create a user account(by clicking the register button), stored on the database, which is required to log into the site and see the stored movies. \r The account can be updated and deleted. It also shows the user's favorite movies.\r A validation for form as well as authorization via JWT is implemented to have a certain security standard.",
-  "main": "src/index.html",
+  "main": "index.js",
   "dependencies": {
     "axios": "^0.27.2",
     "js-tokens": "^4.0.0",
