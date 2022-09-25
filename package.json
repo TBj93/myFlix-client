@@ -1,21 +1,18 @@
 {
   "name": "myflix-client",
   "version": "1.0.0",
-  "description": "The movies are being displayed in cards using react-bootstrap and contain a movie image, fetched by an external URL, as well as information about the genre and its director.\r This client uses axios to fetch movies from a database, that is deployed on heroku  [Link](https://tims-movie-api.herokuapp.com/). \r It's interactive and this client also provides the possiblity to create a user account(by clicking the register button), stored on the database, which is required to log into the site and see the stored movies. \r The account can be updated and deleted. It also shows the user's favorite movies.\r A validation for form as well as authorization via JWT is implemented to have a certain security standard.",
-  "main": "index.js",
+  "description": "",
+  "source": "src/index.html",
   "dependencies": {
     "axios": "^0.27.2",
-    "js-tokens": "^4.0.0",
-    "loose-envify": "^1.4.0",
     "prop-types": "^15.8.1",
-    "react": "^18.2.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^2.4.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^17.0.2",
     "react-redux": "^8.0.2",
     "react-router-dom": "^5.3.0",
     "redux": "^4.2.0",
-    "redux-devtools-extension": "^2.13.9",
-    "scheduler": "^0.23.0"
+    "redux-devtools-extension": "^2.13.9"
   },
   "alias": {
     "process": {
@@ -23,7 +20,9 @@
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+	"build": "parcel build src/index.html"
   },
   "repository": {
     "type": "git",
@@ -36,8 +35,9 @@
   },
   "homepage": "https://github.com/TBj93/myFlix-client#readme",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.6.2",
+    "@parcel/transformer-sass": "^2.5.0",
     "buffer": "^6.0.3",
+    "parcel": "^2.7.0",
     "process": "^0.11.10"
   }
 }

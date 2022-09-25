@@ -5,10 +5,28 @@
 ## This is a working client rendering a database of movies.
 
 The movies are being displayed in cards using react-bootstrap and contain a movie image, fetched by an external URL, as well as information about the genre and its director.
-This client uses axios to fetch movies from a database, that is deployed on heroku  [Link](https://tims-movie-api.herokuapp.com/). 
+This client uses axios to fetch movies from a database, with the help of an API that is deployed on heroku  [Link](https://tims-movie-api.herokuapp.com/). 
 It's interactive and this client also provides the possiblity to create a user account(by clicking the register button), stored on the database, which is required to log into the site and see the stored movies. 
 The account can be updated and deleted. It also shows the user's favorite movies.
 A validation for form as well as authorization via JWT is implemented to have a certain security standard. 
+
+## Challenges
+I had to 
+
+
+## Technologies used
+- Html
+- Css
+- JS
+- React
+
+## Packages and dependencies
+- React-Redux
+- React-bootstrap
+- Router
+- Axios
+
+
 
 ### Requirements
 This app is using react.js as well as react-redux. Latest browser version is required in all popular browsers.
