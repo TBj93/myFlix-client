@@ -24,12 +24,20 @@ Understanding props and states, was a bit tricky in the beginning. Also wrapping
 - React-bootstrap
 - Router
 - Axios
+- Parcel
 
 
 
 ### Requirements
 This app is using react.js as well as react-redux. Latest browser version is required in all popular browsers.
 
+
+### Install and get started
+
+- Clone repo
+- install packages and dependencies as seen in packages.json file
+- go to root folder in terminal and run ```bash npm install ```
+- to start the app in local browser run ```bash parcel src/index.html ```
 
 
 
