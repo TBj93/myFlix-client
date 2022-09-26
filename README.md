@@ -1,6 +1,6 @@
 # myflix-client v1.0.1 alpha
 
-
+![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix1.PNG?raw=true)
 
 ## This is a working client rendering a database of movies.
 
@@ -12,6 +12,9 @@ A validation for form as well as authorization via JWT is implemented to have a 
 
 ## Challenges
 Understanding props and states, was a bit tricky in the beginning. Also wrapping my mind around React hooks and lifecycles required me to do a lot of research, reading threads on github, stackoverflow or watching well educating videos on youtube. 
+
+![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix2.PNG?raw=true)
+
 
 ## Technologies used
 - Html
@@ -39,8 +42,4 @@ This app is using react.js as well as react-redux. Latest browser version is req
 - go to root folder in terminal and run ```bash npm install ```
 - to start the app in local browser run ```bash parcel src/index.html ```
 
-
-
-![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix1.PNG?raw=true)
-![alt text](https://github.com/TBj93/myflix-client/blob/myflix-redux/readme%20imgs/myflix2.PNG?raw=true)
 
