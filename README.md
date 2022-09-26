@@ -11,8 +11,7 @@ The account can be updated and deleted. It also shows the user's favorite movies
 A validation for form as well as authorization via JWT is implemented to have a certain security standard. 
 
 ## Challenges
-I had to 
-
+Understanding props and states, was a bit tricky in the beginning. Also wrapping my mind around React hooks and lifecycles required me to do a lot of research, reading threads on github, stackoverflow or watching well educating videos on youtube. 
 
 ## Technologies used
 - Html
